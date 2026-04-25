@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual env 
+venv/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Arduino build files
+*.elf
+*.bin
+*.hex

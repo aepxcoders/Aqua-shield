@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aqua-Shield Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="app">
+      <!-- LEFT BRAND AREA -->
+      <aside class="brand-panel">
+        <div class="logo-card">
+          <img src="image.png" alt="Aqua-Shield Logo" />
+        </div>
+
+        <h1>Aqua-Shield</h1>
+        <p>Pipeline Monitoring System</p>
+
+        <div class="live-status">
+          <span></span>
+          Live Monitoring
+        </div>
+      </aside>
+
+      <!-- MAIN DASHBOARD -->
+      <main class="main">
+        <header class="header">
+          <div>
+            <h1>Dashboard</h1>
+            <p>Real-time pipeline leakage and water quality monitoring</p>
+          </div>
+        </header>
+
+        <!-- MAIN STATUS -->
+        <section class="status-banner" id="alertBanner">
+          <div class="status-icon">!</div>
+
+          <div class="status-main">
+            <p>Pipeline Status</p>
+            <h2 id="status">Normal</h2>
+            <span id="statusText">No major leakage detected.</span>
+          </div>
+
+          <div class="status-metric">
+            <p>Flow Loss</p>
+            <h3 id="flowLossPercent">0.0%</h3>
+            <small><span id="loss">0.00</span> L/min</small>
+          </div>
+
+          <div class="status-metric">
+            <p>Level Mismatch</p>
+            <h3><span id="levelMismatch">0.00</span></h3>
+            <small>Allowed margin: 10 cm</small>
+          </div>
+
+          <div class="status-metric">
+            <p>Water Quality</p>
+            <h3 id="waterType">Unknown</h3>
+            <small>Raw turbidity: <span id="turbidity">0</span></small>
+          </div>
+        </section>
+
+        <!-- DATA CARDS -->
+        <section class="cards">
+          <div class="card">
+            <div class="card-head">
+              <h2>Flow Comparison</h2>
+              <span>L/min</span>
+            </div>
+
+            <div class="data-row">
+              <p>Inlet Flow</p>
+              <strong><span id="flow1">0.00</span></strong>
+            </div>
+            <div class="bar">
+              <div id="flow1Bar" class="bar-fill inlet"></div>
+            </div>
+
+            <div class="data-row">
+              <p>Outlet Flow</p>
+              <strong><span id="flow2">0.00</span></strong>
+            </div>
+            <div class="bar">
+              <div id="flow2Bar" class="bar-fill outlet"></div>
+            </div>
+
+            <div class="data-row">
+              <p>Flow Loss</p>
+              <strong><span id="lossText">0.00</span></strong>
+            </div>
+            <div class="bar">
+              <div id="lossBar" class="bar-fill loss"></div>
+            </div>
+
+            <div class="margin-box">
+              <div>
+                <p>Loss Percentage</p>
+                <h3 id="flowLossPercentBox">0.0%</h3>
+              </div>
+              <div>
+                <p>Allowed Margin</p>
+                <h3>10%</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head">
+              <h2>Level Balance</h2>
+              <span>cm</span>
+            </div>
+
+            <div class="level-grid">
+              <div>
+                <p>Source Drop</p>
+                <h3><span id="sourceDrop">0.00</span></h3>
+              </div>
+
+              <div>
+                <p>Outlet Rise</p>
+                <h3><span id="outletRise">0.00</span></h3>
+              </div>
+
+              <div>
+                <p>Mismatch</p>
+                <h3 class="danger-value">
+                  <span id="levelMismatchBox">0.00</span>
+                </h3>
+              </div>
+            </div>
+
+            <div id="levelMessage" class="message-box">
+              All readings are within the 10 cm margin.
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head">
+              <h2>Water Quality</h2>
+              <span>Raw Value</span>
+            </div>
+
+            <div class="quality-box">
+              <p>Turbidity Value</p>
+              <h2 id="turbidityBox">0</h2>
+
+              <hr />
+
+              <p>Water Type</p>
+              <h3 id="waterTypeBox">Unknown</h3>
+
+              <p>Quality Level</p>
+              <h3 id="qualityLevel">Unknown</h3>
+
+              <small>Relative turbidity thresholds, not calibrated NTU.</small>
+            </div>
+          </div>
+        </section>
+
+        <!-- LOWER SECTION -->
+        <section class="bottom-grid">
+          <div class="panel">
+            <div class="card-head">
+              <h2>Alert Level Guide</h2>
+              <span>Resolution Logic</span>
+            </div>
+
+            <div class="guide">
+              <div>
+                <span class="dot normal-dot"></span>
+                <strong>Normal</strong>
+                <p>≤ 10% / ≤ 10 cm</p>
+              </div>
+
+              <div>
+                <span class="dot monitor-dot"></span>
+                <strong>Monitor</strong>
+                <p>10–15% / 10–15 cm</p>
+              </div>
+
+              <div>
+                <span class="dot service-dot"></span>
+                <strong>Service Required</strong>
+                <p>15–20% / 15–20 cm</p>
+              </div>
+
+              <div>
+                <span class="dot high-dot"></span>
+                <strong>High Priority</strong>
+                <p>20–30% / 20–30 cm</p>
+              </div>
+
+              <div>
+                <span class="dot immediate-dot"></span>
+                <strong>Immediate Resolve</strong>
+                <p>&gt; 30% / &gt; 30 cm</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel recommendation-panel">
+            <div class="card-head">
+              <h2>Recommended Action</h2>
+              <span>Operations</span>
+            </div>
+
+            <div class="recommendation-box">
+              <h2 id="recommendationTitle">Normal</h2>
+              <p id="recommendation">
+                Readings are within the 10-unit margin. Continue normal
+                monitoring.
+              </p>
+
+              <ul>
+                <li>Check inlet and outlet flow difference.</li>
+                <li>Compare source drop with outlet rise.</li>
+                <li>Follow action based on alert level.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
