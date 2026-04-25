@@ -6,7 +6,9 @@ const char* ssid = "Es iPhone";
 const char* password = "12345678";
 
 // ---------- BACKEND ----------
-const char* serverURL = "http://172.20.10.14:5000/update";
+// const char* serverURL = "http://172.20.10.14:5000/update";
+
+const char* serverURL = "https://aqua-shield-5jam.onrender.com/update";
 
 // ---------- FLOW SENSOR PINS ----------
 #define INLET_FLOW_PIN   18
